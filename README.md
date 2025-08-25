@@ -1,7 +1,5 @@
 # GameMemoryEditor
-## Descrição:
-GameMemoryEditor.c é um programa em C projetado para manipulação de memória em jogos como Roblox e Free Fire (2024), rodando em emuladores como BlueStacks. Ele permite buscar e modificar valores na memória (ex.: saúde, moedas, munição) com uma interface de linha de comando (CLI). Usa a biblioteca windows.h para acesso à memória de processos no Windows, com logging para monitoramento. O programa é voltado para testes educacionais em ambientes privados.
-Aviso Importante: Este script é para uso educacional e em ambientes privados (ex.: emuladores). Manipulação de memória em jogos pode violar os Termos de Serviço de Roblox e Free Fire, resultando em banimentos. Use com responsabilidade.
+
 
 ## Funcionalidades:
 Busca de Valores: Escaneia a memória do processo do jogo para encontrar endereços com valores específicos (ex.: saúde = 100).

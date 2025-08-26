@@ -1,70 +1,92 @@
 # GameMemoryEditor
 
+nnn2
 
-## Funcionalidades:
-Busca de Valores: Escaneia a memória do processo do jogo para encontrar endereços com valores específicos (ex.: saúde = 100).
-Modificação de Memória: Altera valores encontrados para novos valores (ex.: saúde para 9999).
-Logging: Registra ações em arquivo (memory_editor.log) e suporta envio para webhook (ex.: Discord).
-Interface CLI: Interação simples via linha de comando para especificar valores a buscar/modificar.
-Limites de Segurança: Limita o número de endereços encontrados (máximo 100) e inclui tratamento de erros robusto.
+## Features:
 
-## Requisitos:
-Compilador C: GCC ou MSVC (ex.: MinGW para Windows, baixe em mingw-w64.org).
-Sistema Operacional: Windows 10/11 (devido ao uso de windows.h).
-Dependências: Biblioteca padrão do C (windows.h, incluída no Windows SDK).
-Estrutura do Ambiente: Um emulador como BlueStacks rodando Roblox ou Free Fire.
-Bibliotecas: Nenhuma externa necessária, mas libcurl pode ser adicionada para suporte a webhook (opcional).
+* **Value Search:** Scans the game process memory to find addresses with specific values (e.g., health = 100).
+* **Memory Modification:** Changes found values to new ones (e.g., health to 9999).
+* **Logging:** Records actions to a file (`memory_editor.log`) and supports sending logs to a webhook (e.g., Discord).
+* **CLI Interface:** Simple command-line interaction to specify values to search/modify.
+* **Safety Limits:** Restricts the number of found addresses (maximum 100) and includes robust error handling.
 
-## Instalação:
-Crie um Repositório no GitHub (opcional para versionamento):
-Vá para github.com e crie um novo repositório chamado "GameMemoryEditor".
-Clone o repo para o seu PC: git clone https://github.com/hygark/GameMemoryEditor.git
+## Requirements:
 
-Adicione o Script:
-Copie o conteúdo de GameMemoryEditor.c para um arquivo C no seu diretório.
+* **C Compiler:** GCC or MSVC (e.g., MinGW for Windows, download from mingw-w64.org).
+* **Operating System:** Windows 10/11 (due to the use of `windows.h`).
+* **Dependencies:** Standard C library (`windows.h`, included with Windows SDK).
+* **Environment Setup:** An emulator such as BlueStacks running Roblox or Free Fire.
+* **Libraries:** No external ones required, but `libcurl` may be added for webhook support (optional).
 
-Compile o Programa:
-No terminal (com MinGW instalado): gcc -o GameMemoryEditor GameMemoryEditor.c -lpsapi.
+## Installation:
 
-Configuração no C:
-Abra o script e edite as definições no início:
-PROCESS_NAME: Nome do processo do emulador (padrão: "BlueStacks.exe").
-LOG_FILE: Nome do arquivo de log (padrão: "memory_editor.log").
-WEBHOOK_URL: URL de um webhook Discord (crie em Discord > Server Settings > Integrations).
-SCAN_INTERVAL: Intervalo entre varreduras (padrão: 100 ms).
-MAX_ADDRESSES: Máximo de endereços a encontrar (padrão: 100).
-VALUE_TYPE: Tipo de dado a buscar (padrão: int).
+1. **Create a GitHub Repository (optional for versioning):**
+   Go to github.com and create a new repository called **"GameMemoryEditor"**.
+   Clone the repo to your PC:
 
+   ```bash
+   git clone https://github.com/hygark/GameMemoryEditor.git
+   ```
 
+2. **Add the Script:**
+   Copy the content of `GameMemoryEditor.c` into a C file in your directory.
 
-## Como Fazer Funcionar?:
-Ajuste as Configurações:
-Edite PROCESS_NAME para o processo do seu emulador (ex.: "BlueStacks.exe").
-Compile e Execute:
-Compile: gcc -o GameMemoryEditor GameMemoryEditor.c -lpsapi.
-Execute: ./GameMemoryEditor.
-Insira o valor a buscar (ex.: 100 para saúde) e o novo valor (ex.: 9999).
+3. **Compile the Program:**
+   In the terminal (with MinGW installed):
 
+   ```bash
+   gcc -o GameMemoryEditor GameMemoryEditor.c -lpsapi
+   ```
 
-## Teste:
-Abra Roblox ou Free Fire em um emulador.
-O programa escaneia a memória, lista endereços encontrados e modifica os valores.
-Monitore o console ou arquivo de log para resultados (ex.: "Valor modificado em 0x12345678 para 9999").
+### Configuration in C:
 
-Parar o Programa:
-Feche o terminal ou pressione CTRL+C.
+Open the script and edit the definitions at the beginning:
 
-## Exemplos de Uso:
-Teste em Free Fire: Busque o valor da saúde (ex.: 100) e modifique para 9999 para teste em um servidor privado.
-Teste em Roblox: Modifique moedas ou recursos em um jogo de teste (ex.: Pet Simulator, em emulador).
-Logging Avançado: Configure um webhook Discord para receber notificações de varreduras e modificações.
-Expansão: Adicione suporte a tipos de dados diferentes (ex.: float) ou uma GUI com Windows API.
+* **PROCESS\_NAME:** Emulator process name (default: `"BlueStacks.exe"`).
+* **LOG\_FILE:** Log file name (default: `"memory_editor.log"`).
+* **WEBHOOK\_URL:** URL of a Discord webhook (create in Discord > Server Settings > Integrations).
+* **SCAN\_INTERVAL:** Interval between scans (default: 100 ms).
+* **MAX\_ADDRESSES:** Maximum number of addresses to find (default: 100).
+* **VALUE\_TYPE:** Data type to search (default: `int`).
 
-## Aviso Legal e Ético:
+## How to Make It Work?:
 
-Este programa é para fins educativos e testes privados. Não use em jogos públicos ou para cheating, pois pode resultar em banimentos ().
-Sempre respeite os Termos de Serviço de Roblox () e Free Fire.
-Para pentest ou automação ética, adapte para cenários legais.
+1. **Adjust the Configurations:**
+   Edit `PROCESS_NAME` to your emulator’s process (e.g., `"BlueStacks.exe"`).
 
-Contribuições:
-Sinta-se livre para fork o repositório no GitHub e contribuir com melhorias, como suporte a mais tipos de dados ou uma interface gráfica.
+2. **Compile and Run:**
+
+   * Compile:
+
+     ```bash
+     gcc -o GameMemoryEditor GameMemoryEditor.c -lpsapi
+     ```
+   * Run:
+
+     ```bash
+     ./GameMemoryEditor
+     ```
+   * Enter the value to search (e.g., `100` for health) and the new value (e.g., `9999`).
+
+## Testing:
+
+* Open Roblox or Free Fire in an emulator.
+* The program scans the memory, lists found addresses, and modifies the values.
+* Monitor the console or log file for results (e.g., `"Value modified at 0x12345678 to 9999"`).
+
+**Stopping the Program:**
+Close the terminal or press **CTRL+C**.
+
+## Usage Examples:
+
+* **Free Fire Test:** Search for health value (e.g., 100) and modify it to 9999 for testing in a private server.
+* **Roblox Test:** Modify coins or resources in a test game (e.g., Pet Simulator, on emulator).
+* **Advanced Logging:** Configure a Discord webhook to receive notifications of scans and modifications.
+* **Expansion:** Add support for different data types (e.g., `float`) or a GUI with Windows API.
+
+## Legal and Ethical Disclaimer:
+
+This program is for **educational and private testing purposes only**. Do not use it in public games or for cheating, as it may result in bans ().
+Always respect the **Terms of Service** of Roblox () and Free Fire.
+For ethical pentesting or automation, adapt it for legal scenarios.
+
